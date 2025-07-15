@@ -5,9 +5,13 @@ one:
   content: MyText
   published: false
   published_at: 2025-07-15 12:53:25
+  status: draft
+  body: Body text
 
 two:
   title: MyString
   content: MyText
   published: false
   published_at: 2025-07-15 12:53:25
+  status: draft
+  body: Body text
