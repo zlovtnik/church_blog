@@ -14,10 +14,11 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_url
     click_on "New post"
 
-    fill_in "Content", with: @post.content
+    fill_in "Title", with: "Some title"
+    fill_in "Content", with: "This is my custom content value."
+    fill_in "Status", with: "draft"
     check "Published" if @post.published
     fill_in "Published at", with: @post.published_at
-    fill_in "Title", with: @post.title
     click_on "Create Post"
 
     assert_text "Post was successfully created"
@@ -28,7 +29,7 @@ class PostsTest < ApplicationSystemTestCase
     visit post_url(@post)
     click_on "Edit this post", match: :first
 
-    fill_in "Content", with: @post.content
+    fill_in "Content", with: "This is my custom content value."
     check "Published" if @post.published
     fill_in "Published at", with: @post.published_at.to_s
     fill_in "Title", with: @post.title
