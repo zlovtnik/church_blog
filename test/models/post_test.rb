@@ -46,13 +46,13 @@ class PostTest < ActiveSupport::TestCase
   test "status should be present" do
     @post.status = nil
     assert_not @post.valid?
-    assert_includes @post.errors[ :status ], "can't be blank"
+    assert_includes @post.errors[:status], "can't be blank"
   end
 
   test "status should be either draft or published" do
     @post.status = "invalid"
     assert_not @post.valid?
-    assert_includes @post.errors[ :status ], "is not included in the list"
+    assert_includes @post.errors[:status], "is not included in the list"
   end
 
   test "word count should work correctly" do
@@ -76,15 +76,15 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test "draft? method should work correctly" do
-    draft_post = Post.new( status: "draft" )
-    published_post = Post.new( status: "published" )
+    draft_post = Post.new(status: "draft")
+    published_post = Post.new(status: "published")
     assert draft_post.draft?
     assert_not published_post.draft?
   end
 
   test "published? method should work correctly" do
-    draft_post = Post.new( status: "draft" )
-    published_post = Post.new( status: "published" )
+    draft_post = Post.new(status: "draft")
+    published_post = Post.new(status: "published")
     assert published_post.published?
     assert_not draft_post.published?
   end
