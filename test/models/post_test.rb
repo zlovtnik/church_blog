@@ -57,7 +57,7 @@ class PostTest < ActiveSupport::TestCase
 
   test "word count should work correctly" do
     assert_equal 14, @post.word_count
-    @post.body = "One two three"
+    @post.content = "One two three"
     assert_equal 3, @post.word_count
   end
 
