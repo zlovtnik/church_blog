@@ -17,12 +17,30 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6VKHr8BL6l5/1Q1L1RZ6V0w8AVnYskS8MaqkPf7x9I5p" crossorigin="anonymous"></script>
+
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-4">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="/">Church Blog</a>
+        <nav class="d-flex">
+          <a class="nav-link" href="/posts">Posts</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container mb-5">
+      <%= yield %>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light border-top">
+      <div class="container text-center">
+        <span class="text-muted">&copy; 2024 Church Blog</span>
+      </div>
+    </footer>
   </body>
 </html>
