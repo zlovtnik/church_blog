@@ -17,10 +17,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create post" do
     assert_difference("Post.count") do
-      post posts_url, params: { post: { content: "This is a valid post content for testing.", published: @post.published, published_at: @post.published_at, title: @post.title, status: "draft", body: "This is a valid body for testing." } }
+      post posts_url, params: { post: { content: "This is a valid post content for testing.", published: @post.published, published_at: @post.published_at, title: "Test Post Title", status: "draft", body: "This is a valid body for testing." } }
     end
-
-    assert_redirected_to post_url(Post.last)
+    assert_response :redirect
+    created_id = @response.redirect_url.split('/').last
+    created_post = Post.find(created_id)
+    assert_redirected_to post_url(created_post)
+    assert_equal "Test Post Title", created_post.title
   end
 
   test "should show post" do
