@@ -16,43 +16,43 @@ class PostTest < ActiveSupport::TestCase
   test "title should be present" do
     @post.title = ""
     assert_not @post.valid?
-    assert_includes @post.errors[:title], "can't be blank"
+    assert_includes @post.errors[ :title ], "can't be blank"
   end
 
   test "title should not be too short" do
     @post.title = "ab"
     assert_not @post.valid?
-    assert_includes @post.errors[:title], "is too short (minimum is 3 characters)"
+    assert_includes @post.errors[ :title ], "is too short (minimum is 3 characters)"
   end
 
   test "title should not be too long" do
     @post.title = "a" * 101
     assert_not @post.valid?
-    assert_includes @post.errors[:title], "is too long (maximum is 100 characters)"
+    assert_includes @post.errors[ :title ], "is too long (maximum is 100 characters)"
   end
 
   test "content should be present" do
     @post.content = ""
     assert_not @post.valid?
-    assert_includes @post.errors[:content], "can't be blank"
+    assert_includes @post.errors[ :content ], "can't be blank"
   end
 
   test "content should not be too short" do
     @post.content = "ab"
     assert_not @post.valid?
-    assert_includes @post.errors[:content], "is too short (minimum is 10 characters)"
+    assert_includes @post.errors[ :content ], "is too short (minimum is 10 characters)"
   end
 
   test "status should be present" do
     @post.status = nil
     assert_not @post.valid?
-    assert_includes @post.errors[:status], "can't be blank"
+    assert_includes @post.errors[ :status ], "can't be blank"
   end
 
   test "status should be either draft or published" do
     @post.status = "invalid"
     assert_not @post.valid?
-    assert_includes @post.errors[:status], "is not included in the list"
+    assert_includes @post.errors[ :status ], "is not included in the list"
   end
 
   test "word count should work correctly" do
