@@ -16,7 +16,7 @@ class PostsTest < ApplicationSystemTestCase
 
     fill_in "Title", with: "Some title"
     fill_in "Content", with: "This is my custom content value."
-    fill_in "Status", with: "draft"
+    select "Draft", from: "status"
     check "Published" if @post.published
     fill_in "Published at", with: @post.published_at
     click_on "Create Post"
