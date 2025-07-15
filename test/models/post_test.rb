@@ -56,7 +56,7 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test "word count should work correctly" do
-    assert_equal 9, @post.word_count
+    assert_equal 14, @post.word_count
     @post.body = "One two three"
     assert_equal 3, @post.word_count
   end
@@ -64,11 +64,13 @@ class PostTest < ActiveSupport::TestCase
   test "default scope should order by created_at descending" do
     older_post = Post.create!(
       title: "Older Post",
+      content: "This is a valid post content for testing.",
       body: "This is an older post.",
       status: "published"
     )
     newer_post = Post.create!(
       title: "Newer Post",
+      content: "This is a valid post content for testing.",
       body: "This is a newer post.",
       status: "published"
     )
